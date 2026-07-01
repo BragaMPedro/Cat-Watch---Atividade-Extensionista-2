@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "Sighting": {
+      "title": "Sighting",
+      "description": "A report of a cat sighting",
+      "type": "object",
+      "properties": {
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the uploaded image"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "coatColor": {
+          "type": "string"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string",
+          "enum": ["kitten", "small", "medium", "large"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["stray", "owned"]
+        },
+        "hasCollar": {
+          "type": "boolean"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "UID of the user who reported the sighting"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["imageUrl", "latitude", "longitude", "createdBy", "createdAt"]
+    }
+  },
+  "firestore": {
+    "sightings": {
+      "schema": {
+        "$ref": "#/entities/Sighting"
+      },
+      "description": "Collection of all cat sightings reported."
+    }
+  }
+}
